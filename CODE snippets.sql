@@ -82,4 +82,31 @@ RIGHT JOIN ORDERS AS B
 ON A.CUSTOMERID = B.CUSTOMERID;
 
 
-----------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+-- 7. FULL OUTER JOIN: All Customers and All Orders
+-- Question:
+-- List all customers and orders, showing NULLs where customers have not ordered or 
+-- where orders have no customer info.
+-- Expected Output Columns:
+-- • CustomerID, CustomerName, Country, OrderID, OrderDate, ProductID, Quantity
+
+SELECT A.CUSTOMERID, A.CUSTOMERNAME, A.COUNTRY, B.ORDERID, B.ORDERDATE, B.PRODUCTID, B.QUANTITY
+FROM CUSTOMERS AS A
+FULL OUTER JOIN ORDERS AS B
+ON A.CUSTOMERID = B.CUSTOMERID;
+
+
+------------------------------------------------------------------------------------------------------------
+-- 8. FULL OUTER JOIN: All Products and Orders
+-- Question:
+-- List all products and orders, showing NULLs where products were never ordered or 
+-- orders are missing product info.
+-- Expected Output Columns:
+-- • ProductID, ProductName, Price, OrderID, OrderDate, CustomerID, Quantity
+
+SELECT A.PRODUCTID, A.PRODUCTNAME, A.PRICE, B.ORDERID, B.ORDERDATE, B.CUSTOMERID, B.QUANTITY
+FROM PRODUCTS AS A
+FULL OUTER JOIN ORDERS AS B
+ON A.PRODUCTID = B.PRODUCTID;
+
+--------------------------------------E----------ND OF EXERCISE------------------------------------------
