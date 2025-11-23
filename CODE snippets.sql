@@ -25,3 +25,17 @@ ON A.CUSTOMERID = B.CUSTOMERID
 WHERE B.QUANTITY = 1;
 
 
+-- 3. LEFT JOIN: All Customers and Their Orders
+-- Question:
+-- List all customers and any orders they might have placed. Include customers who have 
+-- not placed any orders.
+-- Expected Output Columns:
+-- • CustomerID, CustomerName, Country, OrderID, OrderDate, ProductID, Quantity
+
+SELECT A.CUSTOMERID, A.CUSTOMERNAME, A.COUNTRY, B.ORDERID, B.ORDERDATE, B.PRODUCTID, B.QUANTITY
+FROM SQLJOINS.JOINS.CUSTOMERS AS A
+LEFT JOIN ORDERS AS B
+ON A.CUSTOMERID = B.CUSTOMERID
+ORDER BY QUANTITY ASC;
+
+
