@@ -69,3 +69,17 @@ ON A.PRODUCTID = B.PRODUCTID;
 
 
 --------------------------------------------------------------------------------------------------
+-- 6. RIGHT JOIN: Customer Info with Orders (Include All Customers)
+-- Question:
+-- Which customers have made orders, and include customers even if they have never 
+-- placed an order.
+-- Expected Output Columns:
+-- • CustomerID, CustomerName, Country, OrderID, OrderDate, ProductID, Quantity
+
+SELECT A.CUSTOMERID, A.CUSTOMERNAME, A.COUNTRY, B.ORDERID, B.ORDERDATE, B.PRODUCTID, B.QUANTITY
+FROM CUSTOMERS AS A
+RIGHT JOIN ORDERS AS B
+ON A.CUSTOMERID = B.CUSTOMERID;
+
+
+----------------------------------------------------------------------------------------------------
