@@ -11,7 +11,7 @@ ON A.CUSTOMERID = B.CUSTOMERID
 INNER JOIN SQLJOINS.JOINS.PRODUCTS AS C
 ON A.PRODUCTID = C.PRODUCTID;
 
-
+--------------------------------------------------------------------------
 -- 2. INNER JOIN: Customers Who Placed Orders
 -- Question:
 -- Which customers have placed at least one order?
@@ -25,6 +25,7 @@ ON A.CUSTOMERID = B.CUSTOMERID
 WHERE B.QUANTITY = 1;
 
 
+--------------------------------------------------------------------------------------------------
 -- 3. LEFT JOIN: All Customers and Their Orders
 -- Question:
 -- List all customers and any orders they might have placed. Include customers who have 
@@ -39,6 +40,7 @@ ON A.CUSTOMERID = B.CUSTOMERID
 ORDER BY QUANTITY ASC;
 
 
+--------------------------------------------------------------------------------------------------
 -- 4. LEFT JOIN: Product Order Count
 -- Question:
 -- List all products and how many times each was ordered (if any).
@@ -51,3 +53,19 @@ FROM SQLJOINS.JOINS.PRODUCTS AS A
 LEFT JOIN ORDERS AS B
 ON A.PRODUCTID = B.PRODUCTID
 GROUP BY A.PRODUCTID, A.PRODUCTNAME;
+
+
+---------------------------------------------------------------------------------------------------
+-- 5. RIGHT JOIN: Orders with Product Info (Include Products Not Ordered)
+-- Question:
+-- Find all orders along with product details, including any products that might not have 
+-- been ordered.
+-- Expected Output Columns:
+-- • OrderID, OrderDate, ProductID, ProductName, Price, Quantity
+SELECT A.ORDERID, A.ORDERDATE, A.PRODUCTID, B.PRODUCTNAME, B.PRICE, A.QUANTITY
+FROM SQLJOINS.JOINS.ORDERS AS A
+RIGHT JOIN PRODUCTS AS B
+ON A.PRODUCTID = B.PRODUCTID;
+
+
+--------------------------------------------------------------------------------------------------
