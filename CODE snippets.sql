@@ -39,3 +39,15 @@ ON A.CUSTOMERID = B.CUSTOMERID
 ORDER BY QUANTITY ASC;
 
 
+-- 4. LEFT JOIN: Product Order Count
+-- Question:
+-- List all products and how many times each was ordered (if any).
+-- Expected Output Columns:
+-- • ProductID, ProductName, TotalOrders
+-- (TotalOrders is the count of how many times the product appears in orders)
+
+SELECT A.PRODUCTID, A.PRODUCTNAME, COUNT (B.PRODUCTID) AS TOTALORDERS
+FROM SQLJOINS.JOINS.PRODUCTS AS A
+LEFT JOIN ORDERS AS B
+ON A.PRODUCTID = B.PRODUCTID
+GROUP BY A.PRODUCTID, A.PRODUCTNAME;
